@@ -15,10 +15,9 @@ class CreateGamesTable extends Migration
             $table->integer('release_year');
             $table->unsignedBigInteger('genre_id');
             $table->timestamps();
+            $table->foreign('genre_id')->references('id')->on('genres')->onDelete('cascade');
         });
     }
-    
-
     public function down()
     {
         Schema::dropIfExists('games');
